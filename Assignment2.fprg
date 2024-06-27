@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="2.11">
+    <attributes>
+        <attribute name="name" value=""/>
+        <attribute name="authors" value="HP"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-06-24 04:41:27 PM"/>
+        <attribute name="created" value="SFA7REVTS1RPUC1OUTlEMkFROzIwMjQtMDYtMjQ7MDQ6MDU6MjAgUE07MjQ5MA=="/>
+        <attribute name="edited" value="SFA7REVTS1RPUC1OUTlEMkFROzIwMjQtMDYtMjQ7MDQ6NDE6MjcgUE07MTsyNjA1"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="LoginAttempts" type="Integer" array="False" size=""/>
+            <declare name="username" type="String" array="False" size=""/>
+            <declare name="password" type="String" array="False" size=""/>
+            <assign variable="LoginAttempts" expression="0"/>
+            <input variable="username"/>
+            <input variable="password"/>
+            <declare name="storedusername" type="String" array="False" size=""/>
+            <assign variable="storedusername" expression="&quot;admin&quot;"/>
+            <declare name="storedpassword" type="String" array="False" size=""/>
+            <assign variable="storedpassword" expression="&quot;admin&quot;"/>
+            <if expression="(username &amp; password == storedusername &amp; storedpassword)">
+                <then>
+                    <output expression="&quot;AccessGranted&quot;" newline="True"/>
+                </then>
+                <else>
+                    <assign variable="LoginAttempts" expression="LoginAttempts+1"/>
+                    <output expression="&quot;AccessNotGranted&quot;" newline="True"/>
+                    <if expression="LoginAttempts == 3">
+                        <then>
+                            <output expression="&quot;AccountLocked&quot;" newline="True"/>
+                        </then>
+                        <else/>
+                    </if>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="credentials" type="None" variable="">
+        <parameters>
+            <parameter name="username" type="String" array="False"/>
+            <parameter name="password" type="String" array="False"/>
+        </parameters>
+        <body>
+            <assign variable="username" expression="&quot;admin&quot;"/>
+            <assign variable="password" expression="admin"/>
+        </body>
+    </function>
+</flowgorithm>
